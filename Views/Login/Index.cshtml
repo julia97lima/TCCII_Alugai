@@ -1,0 +1,31 @@
+﻿@model Alugai.Models.ViewModel.LoginViewModel
+@{
+    ViewData["Title"] = "Index";
+}
+
+<form asp-action="Index" method="post" asp style="align-content: center;">
+
+    <div class="form-group" style="width: 200px;">
+        <label asp-for="Cpf" class="control-label">CPF</label>
+        <input asp-for="Cpf" type="text" class="form-control" />
+    </div>
+    <div class="form-group" style="width: 200px;">
+        <label asp-for="Senha" class="control-label">Senha</label>
+        <input asp-for="Senha" type="password" class="form-control" />
+    </div>
+
+    @if (!string.IsNullOrWhiteSpace(@TempData["fail"] as string))
+    {
+        <br/>
+        <div class="alert alert-danger" role="alert">
+            @TempData["fail"]
+        </div>
+    }
+
+    <br/>
+
+    <div class="form-group">
+        <input type="submit" value="Entrar" class="btn btn-primary" />
+    </div>
+
+</form>

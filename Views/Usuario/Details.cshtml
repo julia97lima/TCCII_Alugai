@@ -1,0 +1,18 @@
+﻿
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h1>Details</h1>
+@model Alugai.Models.Usuario
+
+<h2>Detalhes do Usuário</h2>
+
+<div>
+    <h4>@Model.Nome</h4>
+    <p>Email: @Model.Email</p>
+    <p>Telefone: @Model.Telefone</p>
+</div>
+
+<a asp-action="Edit" asp-route-id="@Model.Cpf">Editar</a> |
+<a asp-action="Index" asp-controller="Imovel">Gerenciar imóveis</a>

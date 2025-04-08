@@ -1,0 +1,42 @@
+﻿@model IEnumerable<Alugai.Models.Imovel>
+
+@{
+}
+
+<h2>Lista de Imóveis</h2>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Tipo imóvel</th>
+            <th>Endereço</th>
+            <th>Gerenciar Anúncio</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var imovel in Model)
+        {
+            <tr>
+                <td>@imovel.TipoImovel</td>
+                <td>@imovel.Endereco.Rua / @imovel.Endereco.Cidade / @imovel.Endereco.EstadoUf </td>
+                <td>
+                    @{
+                        if (imovel.StatusImovel)
+                        {
+                            <a asp-action="CancelarAnuncio" asp-route-id="@imovel.Id">Fechar anúncio</a>
+                        }
+                        else
+                        {
+                            <a asp-action="Anunciar" asp-route-id="@imovel.Id">Anunciar</a>
+                            <a asp-action="Delete" asp-route-id="@imovel.Id">| Excluir imóvel</a>
+                        }
+                    }
+
+                    <a asp-action="Edit" asp-route-id="@imovel.Id">| Editar imóvel</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+<a asp-action="Create">Criar Novo</a>
